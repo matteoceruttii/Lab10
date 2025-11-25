@@ -80,7 +80,7 @@ L’intero progetto deve seguire il pattern MVC per separare interfaccia, logica
 e utilizzare il pattern DAO per l’accesso ai dati. 
 
 ##  Interfaccia
-Nel progetto di base, l'interfaccia grafica (file `view.py` e `controller.py`) è già implementata con il seguente layout:
+Nel progetto di base, l'interfaccia grafica (file `view.py`) è già implementata con il seguente layout:
 ![layout.png](img/layout.png)
 
 >💡 **Esempio di Funzionamento**: L’utente inserisce un valore di 300 euro (se non viene inserito nessun valore 
