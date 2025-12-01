@@ -9,7 +9,7 @@ class DAO:
 
 # funzione che ricava dal database i nodi e gli archi tra gli hub (anche il valore della merce)
     @staticmethod
-    def load_archi_spedizioni(val):
+    def load_archi_spedizioni():
         # apro le connessioni
         conn = DBConnect.get_connection()
         result = []
@@ -21,12 +21,12 @@ class DAO:
                     FROM spedizione s 
                     GROUP BY h1, h2 '''
         cursor = conn.cursor(dictionary=True)
-        cursor.execute(query, (val, ))
+        cursor.execute(query)
 
         # popolo la struttura dati
         for row in cursor:
-            elemento = Archi(row['id_hub_origine'],
-                             row['id_hub_destinazione'],
+            elemento = Archi(row['h1'],
+                             row['h2'],
                              row['valore_totale'],
                              row['n_spedizioni'])
             result.append(elemento)
@@ -65,7 +65,10 @@ class DAO:
         return result
 
 
-
 if __name__ == '__main__':
-    DAO = DAO()
-    print(DAO.load_archi_spedizioni(300))
+    dao = DAO()
+    for hub in dao.load_hub():
+        print(hub)
+
+    for arco in dao.load_archi_spedizioni():
+        print(arco)

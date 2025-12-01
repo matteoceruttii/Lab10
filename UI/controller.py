@@ -16,5 +16,15 @@ class Controller:
         * Numero di Tratte
         * Lista di Tratte che superano il costo indicato come soglia
         """
-        # TODO
+        if self._view.guadagno_medio_minimo.value.isdigit():
+            self._view.lista_visualizzazione.clean()
+            # prime informazioni da stampare
+            self._view.lista_visualizzazione.controls.append(f"Numero di Hubs: {self._model.get_num_nodes()}")
+            self._view.lista_visualizzazione.controls.append(f"Numero di Tratte: {self._model.get_num_edges(e)}")
 
+            # informazioni sui vari archi e nodi
+            for i in range(self._model.get_num_nodes()):
+                self._view.lista_visualizzazione.controls.append(f"{i})"
+                                                                 f"{self._model.costruisci_grafo(e)}")
+        else:
+            print('error')
